@@ -24,8 +24,10 @@ public class OCConnectorSettings extends AbstractConnectorSettings {
 
     public static final String TAG_MODE = "ocmode";
 
-    private static final ResourceLocation ICON_GUI_ELEMENTS =
-            new ResourceLocation("xnet", "textures/gui/guielements.png");
+    private static final ResourceLocation LINK_ICON =
+            new ResourceLocation(XNetOCBridge.MODID, "textures/gui/oc_link.png");
+    private static final ResourceLocation ADAPTER_ICON =
+            new ResourceLocation(XNetOCBridge.MODID, "textures/gui/oc_adapter.png");
 
     private XNetOCBridge.BridgeMode mode = XNetOCBridge.BridgeMode.LINK;
     private String adapterAddress = "";
@@ -79,15 +81,15 @@ public class OCConnectorSettings extends AbstractConnectorSettings {
     @Override
     public IndicatorIcon getIndicatorIcon() {
         if (mode == XNetOCBridge.BridgeMode.LINK) {
-            return new IndicatorIcon(ICON_GUI_ELEMENTS, 0, 70, 13, 10);
+            return new IndicatorIcon(LINK_ICON, 0, 0, 13, 10);
         }
-        return new IndicatorIcon(ICON_GUI_ELEMENTS, 13, 70, 13, 10);
+        return new IndicatorIcon(ADAPTER_ICON, 0, 0, 13, 10);
     }
 
     @Nullable
     @Override
     public String getIndicator() {
-        return mode == XNetOCBridge.BridgeMode.LINK ? "L" : "A";
+        return null;
     }
 
     @Override

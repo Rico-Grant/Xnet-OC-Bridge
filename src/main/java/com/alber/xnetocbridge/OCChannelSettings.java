@@ -211,7 +211,7 @@ public class OCChannelSettings implements IChannelSettings {
     @Nullable
     @Override
     public String getIndicator() {
-        return lastHadError ? "!" : "O";
+        return lastHadError ? "!" : null;
     }
 
     @Override
