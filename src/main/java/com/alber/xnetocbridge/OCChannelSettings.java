@@ -31,7 +31,7 @@ import java.util.Map;
 public class OCChannelSettings implements IChannelSettings {
 
     private static final ResourceLocation ICON_GUI_ELEMENTS =
-            new ResourceLocation(XNetOCBridge.MODID, "textures/gui/oc_channel.png");
+            new ResourceLocation(XNetOCBridge.MODID, "textures/gui/oc_guielements.png");
 
     private int lastLinkCount = 0;
     private int lastAdapterCount = 0;
