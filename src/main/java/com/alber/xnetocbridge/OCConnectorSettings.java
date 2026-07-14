@@ -79,9 +79,9 @@ public class OCConnectorSettings extends AbstractConnectorSettings {
     @Override
     public IndicatorIcon getIndicatorIcon() {
         if (mode == XNetOCBridge.BridgeMode.LINK) {
-            return new IndicatorIcon(ICON_GUI_ELEMENTS, 0, 10, 13, 10);
+            return new IndicatorIcon(ICON_GUI_ELEMENTS, 0, 10, 11, 10);
         }
-        return new IndicatorIcon(ICON_GUI_ELEMENTS, 13, 10, 13, 10);
+        return new IndicatorIcon(ICON_GUI_ELEMENTS, 11, 10, 11, 10);
     }
 
     @Nullable
