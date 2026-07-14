@@ -1,0 +1,10 @@
+.gradle/
+build/
+run/
+libs/
+AI_LOG.md
+
+*.class
+*.log
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
