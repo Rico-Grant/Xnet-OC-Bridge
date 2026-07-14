@@ -12,6 +12,7 @@ import mcjty.xnet.api.keys.SidedConsumer;
 import mcjty.xnet.blocks.cables.ConnectorTileEntity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -28,6 +29,9 @@ import java.util.Map;
  * nodes and ADAPTER proxy environments to that hub.
  */
 public class OCChannelSettings implements IChannelSettings {
+
+    private static final ResourceLocation ICON_GUI_ELEMENTS =
+            new ResourceLocation(XNetOCBridge.MODID, "textures/gui/oc_channel.png");
 
     private int lastLinkCount = 0;
     private int lastAdapterCount = 0;
@@ -201,13 +205,13 @@ public class OCChannelSettings implements IChannelSettings {
     @Nullable
     @Override
     public IndicatorIcon getIndicatorIcon() {
-        return null;
+        return new IndicatorIcon(ICON_GUI_ELEMENTS, 0, 0, 11, 10);
     }
 
     @Nullable
     @Override
     public String getIndicator() {
-        return lastHadError ? "!" : null;
+        return lastHadError ? "!" : "O";
     }
 
     @Override

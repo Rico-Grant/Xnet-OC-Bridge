@@ -7,6 +7,7 @@ import mcjty.xnet.api.gui.IndicatorIcon;
 import mcjty.xnet.api.helper.AbstractConnectorSettings;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -15,21 +16,16 @@ import java.util.Set;
 
 /**
  * Per-connector settings for the OpenComputers channel type.
- * <p>
- * Two modes:
- * <ul>
- *   <li><b>LINK</b> — virtual OC cable endpoint. Bridges OC networks between
- *       connectors on the same XNet channel.</li>
- *   <li><b>ADAPTER</b> — virtual OC adapter. Exposes the adjacent block as an
- *       OC component to computers on the same channel.</li>
- * </ul>
- * LINK mode is intentionally addressless, like a cable. ADAPTER mode uses the
- * proxied OC driver's component node, whose address is assigned by OC and
- * restored from NBT while the connector exists.
+ *
+ * LINK is a virtual OC cable endpoint. ADAPTER is a directional virtual OC
+ * adapter for the connector side.
  */
 public class OCConnectorSettings extends AbstractConnectorSettings {
 
     public static final String TAG_MODE = "ocmode";
+
+    private static final ResourceLocation ICON_GUI_ELEMENTS =
+            new ResourceLocation("xnet", "textures/gui/guielements.png");
 
     private XNetOCBridge.BridgeMode mode = XNetOCBridge.BridgeMode.LINK;
     private String adapterAddress = "";
@@ -82,7 +78,10 @@ public class OCConnectorSettings extends AbstractConnectorSettings {
     @Nullable
     @Override
     public IndicatorIcon getIndicatorIcon() {
-        return null;
+        if (mode == XNetOCBridge.BridgeMode.LINK) {
+            return new IndicatorIcon(ICON_GUI_ELEMENTS, 0, 70, 13, 10);
+        }
+        return new IndicatorIcon(ICON_GUI_ELEMENTS, 13, 70, 13, 10);
     }
 
     @Nullable
@@ -174,5 +173,4 @@ public class OCConnectorSettings extends AbstractConnectorSettings {
             NBTCompat.setTag(tag, "ocAdapterNbt", NBTCompat.copy(adapterNbtData));
         }
     }
-
 }
